@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Insert title here</title>
+<link href="../themes/default/easyui.css" rel="stylesheet"  type="text/css"/>
+<link href="../themes/icon.css" rel="stylesheet"  type="text/css"/>
+<script type="text/javascript" src="../js/jquery-1.7.2.min.js"></script>
+<script src="../js/jquery.easyui.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+$(function(){
+$("input.easyui-datebox").datebox({
+   		 formatter: function(date){
+		   	var y = date.getFullYear();
+			var m = date.getMonth()+1;
+			var d = date.getDate();
+			return y+"-"+m+"-"+d;
+   		 },
+   		 parse:function(date){
+   		 	 var t=Date.parse(date);
+			if (!isNaN(t)){
+				return new Date(t);
+			} else {
+				return new Date();
+			}
+   		 }
+	});
+$("#news_comment_list").datagrid({
+		title:'评论列表',
+		fit:true,
+		toolbar:"#news_tb",
+		fitColumns:true,
+		idField:'newsCommentId',
+		singleSelect:false,
+		pagination:true,
+		pageList:[10],
+		pageSize:10,
+		columns:[[
+		{field:'newsCommentId',checkbox:true},
+		{field:'comment',title:'评论内容',width:100},
+		{field:'author',title:'发布者',width:60},
+		{field:'opt',title:'操作',width:50}]]
+});
+$("#news_comment_list").datagrid("getPager").pagination({
+    total:'0',
+    pageNumber:'1',
+    onSelectPage:function(pageNumber,pageSize){
+    	
+    	window.location.href='CommentManageServlet?nid=37&page='+pageNumber+'&rows='+pageSize;
+    	
+    }
+});
+$("#delsel").click(function(){
+	var selRows=$("#news_comment_list").datagrid("getSelections");
+	if(selRows.length==0){
+		$.messager.alert('消息框',"请选择一条记录");
+		return;
+	}
+	$.messager.confirm("批量删除提醒","确认要执行删除操作吗",function(r){
+		if(r){
+			var ids="";
+			for(var i=0;i<selRows.length;i++){
+				if(i!=selRows.length-1)ids+=selRows[i].newsCommentId+",";
+				else ids+=selRows[i].newsCommentId;
+			}
+			$("#idsel").val(ids);
+			$("#delFrm").submit();
+		}
+	});
+	
+});
+});
+function delRow(cid){
+
+	$.messager.confirm("删除提醒","确认要执行删除操作吗?",function(r){
+		if(r){
+			window.location.href="CommentManageServlet?nid=37&cid="+cid+"&opt=1";
+		}
+	});
+	
+}
+
+function getRowIndex(target){
+	var tr=$(target).closest("tr.datagrid-row");	
+	return parseInt(tr.attr('datagrid-row-index'));
+}
+
+</script>
+</head>
+<body>
+
+<table id="news_comment_list" >
+
+
+</table>
+
+<form action="CommentManageServlet" method="post" id="delFrm">
+		<input type="hidden" name="opt" value="2" />
+	<input type="hidden" name="ids" value="" id="idsel"/>
+	<input type="hidden" name="nid" value="37"/>
+</form>
+<div id="news_tb"  style="padding:3px">
+
+<a href="#" id="delsel" class="easyui-linkbutton" data-options="iconCls:'icon-search'">批量删除</a></div>
+</body>
+</html>

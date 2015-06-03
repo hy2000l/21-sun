@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Insert title here</title>
+<link href="../themes/default/easyui.css" rel="stylesheet"  type="text/css"/>
+<link href="../themes/icon.css" rel="stylesheet"  type="text/css"/>
+<script type="text/javascript" src="../js/jquery-1.7.2.min.js"></script>
+<script src="../js/jquery.easyui.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+$(function(){
+	$("#mydg").dialog("close");
+$("input.easyui-datebox").datebox({
+   		 formatter: function(date){
+		   	var y = date.getFullYear();
+			var m = date.getMonth()+1;
+			var d = date.getDate();
+			return y+"-"+m+"-"+d;
+   		 },
+   		 parse:function(date){
+   		 	 var t=Date.parse(date);
+			if (!isNaN(t)){
+				return new Date(t);
+			} else {
+				return new Date();
+			}
+   		 }
+	});
+$("#school_type_list").datagrid({
+		title:'频道',
+		fit:true,
+	//	fitColumns:true,
+		idField:'id',
+		toolbar:"#type_tb",
+		singleSelect:true,
+		columns:[[
+		{field:'id',title:'编号',width:100},
+		{field:'title',title:'频道',width:200},
+		{field:'opt',title:'操作',width:150}]],
+		
+});
+
+
+});
+function updateRow(mid,typeName){
+	$("#opt").val("3");
+	$("#id").val(mid);
+	$("#oldId").val(mid);
+	$("#typeName").val(typeName);
+	$("#mydg").dialog({title:'修改频道'});
+	$("#mydg").dialog("open");	
+	
+	
+}
+function getRowIndex(target){
+	var tr=$(target).closest("tr.datagrid-row");	
+	return parseInt(tr.attr('datagrid-row-index'));
+}
+	
+
+	
+function showDialog(){
+	$("#opt").val("2");
+		$("#id").val("");
+	$("#typeName").val("");
+	$("#mydg").dialog({
+		title:'添加频道'
+		});
+		$("#mydg").dialog("open");	
+	}	
+function subFrm(){
+		$("#myFrm").submit();
+		$("#mydg").dialog("close");	
+}	
+function delRow(nid){
+	$.messager.confirm("删除提醒","确认要执行删除操作吗?",function(r){
+		if(r){
+			window.location.href="NewsTypeServlet?opt=4&id="+nid;
+		}
+	});
+	
+}
+</script>
+</head>
+<body>
+
+<table id="school_type_list"  >
+
+	<tr>
+	<td>11</td>
+	<td>原创</td>
+	<td>
+	<input type='button' value='修改' onclick='updateRow(11,"原创")'/>
+		&nbsp;&nbsp;
+		<input type='button' value='删除' onclick='delRow(11)'/>
+	</td>
+	</tr>
+
+	
+	
+	
+	
+</table>
+
+<div id="type_tb"  style="padding:3px">
+
+<a href="#" id="addStu" onclick="showDialog()" class="easyui-linkbutton" data-options="iconCls:'icon-add'"> 添加频道</a>
+
+</div>
+ <div id="mydg"  style="padding:10px" class="easyui-dialog" data-options="width:300,heigth:150,modal:true,closed:true" >
+      <table >
+ <form id="myFrm" action="/21-sun/ch02/add_channel.jsp" method="post" >
+
+     <tr>
+      <td>编号：</td>
+      <td><input type="text" name="id"  id="id"/></td>
+    </tr>
+    <tr>
+      <td>名称：</td>
+      <td><input type="text" name="typeName"  id="typeName"/></td>
+    </tr>
+    <tr>
+      <td><input type="button" value="确定" onclick="subFrm()"/></td>
+      <td><input type="reset" name="重置"/></td>
+    </tr>
+    </form>
+    </table>
+   </div> 
+
+
+
+
+
+</body>
+</html>

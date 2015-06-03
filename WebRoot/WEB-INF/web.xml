@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" 
+	xmlns="http://java.sun.com/xml/ns/javaee" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+	
+  <welcome-file-list>
+   
+  	<welcome-file>index.jsp</welcome-file>
+
+  </welcome-file-list>
+  <servlet>
+  	<servlet-name>HelloWorldServlet</servlet-name>
+  	<servlet-class>com.demo.servlet.HelloWorldServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>LoginServlet</servlet-name>
+    <servlet-class>com.news.servlet.LoginServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>AddNewsServlet</servlet-name>
+    <servlet-class>com.news.servlet.AddNewsServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>UserServlet</servlet-name>
+    <servlet-class>com.news.servlet.UserServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>LifeCycleServlet</servlet-name>
+    <servlet-class>com.demo.servlet.LifeCycleServlet</servlet-class>
+ 	<init-param>
+    	<param-name>out</param-name>
+    	<param-value>text/html</param-value>
+    </init-param>
+    <init-param>
+    	<param-name>style</param-name>
+    	<param-value>1</param-value>
+    </init-param>
+ 
+  </servlet>
+  
+  <servlet>
+    <servlet-name>SearchBaseNewsServlet</servlet-name>
+    <servlet-class>com.news.servlet.SearchBaseNewsServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>DeleteNewsServlet</servlet-name>
+    <servlet-class>com.news.servlet.DeleteNewsServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>SearchRoleServlet</servlet-name>
+    <servlet-class>com.news.servlet.SearchRoleServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>DelRoleServlet</servlet-name>
+    <servlet-class>com.news.servlet.DelRoleServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>AddRoleServlet</servlet-name>
+    <servlet-class>com.news.servlet.AddRoleServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ShowAclServlet</servlet-name>
+    <servlet-class>com.news.servlet.ShowAclServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>SetAclServlet</servlet-name>
+    <servlet-class>com.news.servlet.SetAclServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>SearchUserServlet</servlet-name>
+    <servlet-class>com.news.servlet.SearchUserServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>SetRoleServlet</servlet-name>
+    <servlet-class>com.news.servlet.SetRoleServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>GetChannelsServlet</servlet-name>
+    <servlet-class>com.news.servlet.GetChannelsServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>GetRolesJosnServlet</servlet-name>
+    <servlet-class>com.news.servlet.GetRolesJosnServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>SearchNewsJsonServlet</servlet-name>
+    <servlet-class>com.news.servlet.SearchNewsJsonServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>SearchUsersJsonServlet</servlet-name>
+    <servlet-class>com.news.servlet.SearchUsersJsonServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>SetRoleAjaxServlet</servlet-name>
+    <servlet-class>com.news.servlet.SetRoleAjaxServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>EChartsDataServelt</servlet-name>
+    <servlet-class>com.echarts.servlet.EChartsDataServelt</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>DeleteUserServlet</servlet-name>
+    <servlet-class>com.news.servlet.DeleteUserServlet</servlet-class>
+  </servlet>
+  <filter>
+    <filter-name>PermissionFilter</filter-name>
+    <filter-class>com.news.filter.PermissionFilter</filter-class>
+  </filter>
+
+  
+  
+  <filter>
+    <filter-name>EncodingFilter</filter-name>
+    <filter-class>com.news.filter.EncodingFilter</filter-class>
+  </filter>
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+<servlet-mapping>
+	<servlet-name>SetRoleServlet</servlet-name>
+	<url-pattern>/user/SetRoleServlet</url-pattern>
+</servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>HelloWorldServlet</servlet-name>
+  	<url-pattern>/demo/HelloWorldServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>LoginServlet</servlet-name>
+    <url-pattern>/user/LoginServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AddNewsServlet</servlet-name>
+    <url-pattern>/news/AddNewsServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>UserServlet</servlet-name>
+    <url-pattern>/user/UserServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>LifeCycleServlet</servlet-name>
+    <url-pattern>/demo/LifeCycleServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>SearchBaseNewsServlet</servlet-name>
+    <url-pattern>/news/SearchBaseNewsServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>DeleteNewsServlet</servlet-name>
+    <url-pattern>/news/DeleteNewsServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>SearchRoleServlet</servlet-name>
+    <url-pattern>/role/SearchRoleServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>DelRoleServlet</servlet-name>
+    <url-pattern>/role/DelRoleServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AddRoleServlet</servlet-name>
+    <url-pattern>/role/AddRoleServlet</url-pattern>
+  </servlet-mapping>
+    <servlet-mapping>
+    <servlet-name>ShowAclServlet</servlet-name>
+    <url-pattern>/role/ShowAclServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>SetAclServlet</servlet-name>
+    <url-pattern>/role/SetAclServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>SearchUserServlet</servlet-name>
+    <url-pattern>/user/SearchUserServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>GetChannelsServlet</servlet-name>
+    <url-pattern>/news/GetChannelsServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>GetRolesJosnServlet</servlet-name>
+    <url-pattern>/role/GetRolesJosnServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>SearchNewsJsonServlet</servlet-name>
+    <url-pattern>/news/SearchNewsJsonServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>SearchUsersJsonServlet</servlet-name>
+    <url-pattern>/user/SearchUsersJsonServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>SetRoleAjaxServlet</servlet-name>
+    <url-pattern>/user/SetRoleAjaxServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>EChartsDataServelt</servlet-name>
+    <url-pattern>/echarts/EChartsDataServelt</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>DeleteUserServlet</servlet-name>
+    <url-pattern>/user/DeleteUserServlet</url-pattern>
+  </servlet-mapping>
+  
+  <filter-mapping>
+    <filter-name>PermissionFilter</filter-name>
+    <url-pattern>/news/SearchBaseNewsServlet</url-pattern>
+  </filter-mapping>
+   <filter-mapping>
+    <filter-name>PermissionFilter</filter-name>
+    <url-pattern>/user/SearchUserServlet</url-pattern>
+  </filter-mapping>
+   <filter-mapping>
+    <filter-name>PermissionFilter</filter-name>
+    <url-pattern>/role/SearchRoleServlet</url-pattern>
+  </filter-mapping>
+  
+  <filter-mapping>
+    <filter-name>EncodingFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+   
+  
+  
+  
+  <filter>
+    <filter-name>MyFilter</filter-name>
+    <filter-class>com.news.filter.MyFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>MyFilter</filter-name>
+    <url-pattern>/user/LoginServlet</url-pattern>
+  </filter-mapping>
+</web-app>
